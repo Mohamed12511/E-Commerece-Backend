@@ -1,9 +1,14 @@
 const express=require('express');
+const response_time=require('response-time');
 const app=express();
-const {ConfigINFO:P}=require('./config/server_config');
-const Port=P.Port;
+const {info}=require('./config/server_config');
+const port=info.port;
 const route=require('./routes/api_routes');
+app.use(express.json()); // if the request has json body will make it js obj
+app.use(express.urlencoded()); // if the request has html body will make it js obj
+app.use(express.text()); // if the request has text body will make it String 
+app.use(response_time());
 
 app.use('/api',route);
-console.log(Port);
-app.listen(Port,()=>console.log(`Server Is Running${Port}`));
+
+app.listen(port,()=>console.log(`Server Is Running on ${port}`));
