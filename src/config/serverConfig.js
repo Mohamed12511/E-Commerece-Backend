@@ -1,4 +1,4 @@
-require('dotevn').config();
+require('dotenv').config();
 
 const ConfigINFO={
     Port:process.env.Port||3000

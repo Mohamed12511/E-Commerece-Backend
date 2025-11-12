@@ -1,4 +1,9 @@
 const express=require('express');
 const app=express();
-const {ConfigINFO:Conig}=require('./config/serverConfig');
-app.listen(ConfigINFO.Port,()=>console.log("Server Is Running"));
+const {ConfigINFO:P}=require('./config/serverConfig');
+const Port=P.Port;
+const route=require('./Routes/apiRoutes');
+
+app.use('/api',route);
+console.log(Port);
+app.listen(Port,()=>console.log(`Server Is Running${Port}`));
