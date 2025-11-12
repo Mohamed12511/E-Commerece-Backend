@@ -1,7 +1,7 @@
 const express=require('express');
 const route=express.Router();
-const PingRouter=require('./pingRoutev1.js');
-const ProductsRouter=require('./ProductRouterV1.js');
+const PingRouter=require('./ping_route_v1.js');
+const ProductsRouter=require('./product_router_v1.js');
 route.use('/ping',PingRouter);
 route.use('/Products',ProductsRouter);
 
