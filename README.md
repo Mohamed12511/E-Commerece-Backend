@@ -9,7 +9,14 @@ git clone https://github.com/Mohamed12511/E-Commerece-Backend.git
 
 3. Install node_modules 
 
-4. Turn Up the Server 
+4. Create a new '.env' file in the root directory  of project (you can do it using vim .env) and then add the following 
+evvironment variables to the .env 
+
+```
+Port =value of your the socket port 
+```
+
+5. Turn Up the Server 
 
 ````
 npm start
