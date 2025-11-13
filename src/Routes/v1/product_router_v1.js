@@ -1,5 +1,7 @@
 const express=require('express');
 const route=express.Router();
-route.get('/',(req,res)=>res.json({msg:"Iam the Products"}));
+const {createProduct}=require('../../controllers/product_controller');
+const {createProductValidator}=require('../../middlewares.js/product_middleware.js');
+route.post('/',createProductValidator,createProduct);
 
 module.exports=route;
