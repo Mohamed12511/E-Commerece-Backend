@@ -9,4 +9,5 @@ app.use(express.text()); // if the request has text body will make it String
 app.use(response_time());
 const route=require('./routes/api_routes');
 app.use('/api',route);
+require('./config/db.config');
 app.listen(port,()=>console.log(`Server Is Running on ${port}`));
