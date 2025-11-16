@@ -1,7 +1,14 @@
 
 // In DB memory 
+const FakeStoreRepository=require('../repository/fake_store_repository');
+const repository=FakeStoreRepository;
 const products=[];
-function Create_Product(product){
+
+class ProductService{
+    constructor(repository){
+        this.repository=repository;
+    }
+Create_Product(product){
     const newProduct={
         id:products.length,
         ...product
@@ -10,12 +17,14 @@ function Create_Product(product){
     return newProduct;
 }
 
-const getProducts=()=>{
-    return products;
+getProducts=async ()=>{
+    const products= await this.repository.getProducts();
+    return products.data;
 }
-const getProductById=(id)=>{
+getProductById=(id)=>{
     return products.filter((val)=>val.id==id);
 }
+}
 
 
-module.exports={Create_Product,getProducts,getProductById};
+module.exports=ProductService;

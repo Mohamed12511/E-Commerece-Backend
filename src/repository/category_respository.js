@@ -33,6 +33,16 @@ try{
         console.log(err);
     }
 }
-};
+
+    DeleteCategory=async(id)=>{
+        try{
+            const category=await Category.findByPk(id);
+            await category.destroy();
+            return "Removed Successfully";
+        }catch(err){
+            console.log("something is wrong",err);
+        }
+    }
+}
 
 module.exports={CategoryRepository};

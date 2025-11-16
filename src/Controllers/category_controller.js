@@ -46,5 +46,17 @@ async function getCategories(req,res){
     }
 
 }
+async function DeleteCategory(req,res) {
+    try{
+        const response=await categoryService.DeleteCategory(req.params.id);
+        return res.json({
+            success:true,
+            errors:{},
+            data:response
+        })
+    }catch(err){
+        console.log("Something is Wrong",err);
+    }
+}
 
-module.exports={CreateCategory,getCategory,getCategories};
+module.exports={CreateCategory,getCategory,getCategories,DeleteCategory};

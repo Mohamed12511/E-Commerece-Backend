@@ -1,9 +1,10 @@
-
-const {getProducts,Create_Product,getProductById}=require('../services.js/product_service');
+const repository=require('../repository/fake_store_repository');
+const ProductService=require('../services.js/product_service');
+const productService=new ProductService(new repository());
 
 const createProduct=(req,res)=>{
     try{
-        const response=Create_Product(req.body);
+        const response=productService.Create_Product(req.body);
         return res.json({
             sucess:true,
             err:{},
@@ -17,9 +18,9 @@ const createProduct=(req,res)=>{
 };
 
 
-const Get_All_Products=(req,res)=>{
+const Get_All_Products=async (req,res)=>{
 try{
-        const response=getProducts();    
+        const response=await productService.getProducts();    
         res.json({
             sucess:true,
             err:{},
@@ -34,7 +35,7 @@ try{
 
 const getProduct=(req,res)=>{
     try{
-         const product=getProductById(req.params.id);
+         const product=productService.getProductById(req.params.id);
         res.json({
             sucess:true,
             err:{},

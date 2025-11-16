@@ -24,6 +24,15 @@ class CategoryService{
             console.log("Something Wrong",err);
         }
     }
+
+    async DeleteCategory(id){
+        try{
+            const response=await this.repository.DeleteCategory(id);
+            return response;
+        }catch(err){
+            console.log("Something Wrong",err);
+        }
+    }
 }
 
 module.exports={CategoryService};
